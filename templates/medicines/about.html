@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Pharmacy App - About Us{% endblock %}
+
+{% block content %}
+<div class="content container my-5">
+
+    <!-- Main Banner -->
+    <div class="p-5 mb-5 bg-white rounded-4 shadow-sm border">
+        <div class="container-fluid py-2">
+            <h1 class="display-5 fw-bold text-dark mb-3">About Pharmacy App</h1>
+            <p class="fs-4 text-secondary col-md-10">
+                We help you quickly find the necessary medications in your area and compare pharmacy prices without any hassle.
+            </p>
+        </div>
+    </div>
+
+    <!-- Core Features / How It Works -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100 border">
+                <div class="fs-2 mb-3">📍</div>
+                <h3 class="h5 fw-bold">Find Nearby</h3>
+                <p class="text-secondary mb-0">Locate medicines in the pharmacies closest to your area within minutes.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100 border">
+                <div class="fs-2 mb-3">💰</div>
+                <h3 class="h5 fw-bold">Compare Prices</h3>
+                <p class="text-secondary mb-0">Compare drug prices across different pharmacies and save your budget.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100 border">
+                <div class="fs-2 mb-3">⚡</div>
+                <h3 class="h5 fw-bold">Convenient & Fast</h3>
+                <p class="text-secondary mb-0">It's easy—just submit a request and let our system gather all the information for you.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="p-4 p-md-5 mb-4 rounded-4 text-bg-light border text-center">
+        <h2 class="fw-bold mb-3">Ready to find your medicine?</h2>
+        <p class="text-secondary mb-4">Try our service right now and see how simple it is.</p>
+        <a href="/" class="btn btn-primary btn-lg px-4 rounded-pill">Find Medicine</a>
+    </div>
+
+</div>
+{% endblock %}

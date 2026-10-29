@@ -2,5 +2,5 @@ from django.shortcuts import render
 
 
 
-def home(request):
+def home_view(request):
     return render(request, 'medicines/home.html')

@@ -1,7 +1,7 @@
 from django.urls import path
 
-from medicines import views
+from .views import home_view
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', home_view, name='home'),
 ]

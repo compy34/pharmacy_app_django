@@ -10,6 +10,41 @@
             <p class="fs-5 text-secondary">
                 Register new profile to database
                 </p>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h2 class="mb-4">
+                                Creating your account
+                            </h2>
+                            <form method="POST">
+                                {% csrf_token %}
+                                {% for field in form %}
+                                    <div class="mb-4">
+                                        <label>
+                                            {{ field.label }}
+                                        </label>
+                                    {{ field }}
+                                     {% if field.help_text %}
+                                         <div class="form-text">
+                                         {{ field.help_text }}
+                                         </div>
+                                    {% endif %}
+                                    {% for error in field.errors %}
+                                        <div class="text-denger">
+                                        {{ error }}
+                                        </div>
+                                    {% endfor %}
+                                    </div>
+                                {% endfor %}
+                            <button class="btn btn-primary btn-lg btn-block" >
+                                Register account
+                            </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

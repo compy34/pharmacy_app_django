@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+    {% extends 'base.html' %}
 
 {% block title %}Pharmacy App - Login{% endblock %}
 
@@ -10,6 +10,34 @@
             <p class="fs-5 text-secondary">
                 login to existing account
                            </p>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4">
+                            <h2 class="mb-4 ">login</h2>
+                            <form method="post">
+                                {% csrf_token %}
+                                {% for field in form %}
+                                    <div class="mb-3">
+                                        <label class="form-label">
+                                            {{ field.label_tag }}
+                                        </label>
+                                    {{ field }}
+                                    {% for error in field.errors %}
+                                        <div class="text-danger">
+                                        {{ error }}
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endfor %}
+                            <button class="btn btn-success w-100">
+                                        Login
+                                    </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

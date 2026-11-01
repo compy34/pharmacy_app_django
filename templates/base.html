@@ -26,13 +26,13 @@
                 {% if user.is_authenticated %}
                     <a href="#" class="nav-link">my orders</a>
                     <span class="navbar-text mx-2 fw-semibold">{{ user.username }}</span>
-                    <form method="POST" action="/logout/" class="d-inline ms-2">
+                    <form method="POST" action="/accounts/signout" class="d-inline ms-2">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-outline-light btn-sm">logout</button>
                     </form>
                 {% else %}
-                    <a href="/login/" class="nav-link">login</a>
-                    <a href="/register/" class="nav-link">register</a>
+                    <a href="/accounts/signin" class="nav-link">login</a>
+                    <a href="/accounts/signup" class="nav-link">register</a>
                 {% endif %}
             </div>
         </div>

@@ -50,8 +50,8 @@ def checkout(request):
 
     if request.method == 'GET':
         form = OrderForm(initial={
-            'customer_name': request.user.get_full_name() or request.user.username,
-            'phone' : ''
+            'castomer_name': request.user.get_full_name() or request.user.username,
+            'phone': ''
         })
 
     elif request.method == 'POST':
@@ -70,7 +70,21 @@ def checkout(request):
             request.session['cart'] = {}
             messages.success(request, 'Thank you for your order!')
 
-            #return redirect('my_orders')
-            return redirect('cart')
+            return redirect('my_orders')
+
 
     return render(request, 'orders/checkout.html', context={'form': form})
+
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
+
+
+@login_required
+def my_orders(request):
+    orders = (request.user.orders.prefetch_related(
+        'items__pharmacy_medicine__medicine',
+        'items__pharmacy_medicine__pharmacy',
+    )).order_by('-created_at')
+
+    return render(request, 'orders/my_orders.html', context={'orders': orders})

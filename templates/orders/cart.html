@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Pharmacy App - Cart{% endblock %}
+
+{% block content %}
+<div class="content container my-5">
+
+
+    <div class="px-5 py-2 mb-4 bg-white rounded-3 shadow-sm border">
+        <div class="container-fluid py-0 text-center">
+             <h2 class="display-5 fw-bold text-dark mb-3">Cart</h2>
+            {% if items %}
+                <table class="table bg-white">
+                <thead>
+                <tr>
+                    <th>Medicine</th>
+                    <th>Pharmacy</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Sum</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.offer.medicine.name }}</td>
+                        <td>{{ item.offer.pharmacy.name }}</td>
+                        <td>{{ item.offer.price }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.total }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+                    <div class="text-end">
+                    <h3>
+                        total: {{ total }} USD
+                    </h3>
+                        <a href="" class="btn btn-success mt-3">
+                            arrange delivery
+                        </a>
+                    </div>
+                {% else %}
+                <div class="alert alert-info">cart is empty</div>
+                <a class="btn btn-success mt-3" href="{% url 'home' %}"></a>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

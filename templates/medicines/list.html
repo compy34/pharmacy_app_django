@@ -1,19 +1,49 @@
 {% extends 'base.html' %}
-{% block title %}Pharmacy App - About Us{% endblock %}
+{% block title %}Pharmacy App - Medicine catalog{% endblock %}
 
 {% block content %}
 <div class="content container my-5">
 
     <!-- Main Banner -->
     <div class="p-5 mb-5 bg-white rounded-4 shadow-sm border">
-        <div class="container-fluid py-2">
-            <h1 class="display-5 fw-bold text-dark mb-3">About Pharmacy App</h1>
-            <p class="fs-4 text-secondary col-md-10">
-              result medicine list by serching
-            </p>
+        <div class="container-fluid py-0">
+            <h2 class="display-5 fw-bold text-dark mb-3">Medicine Catalog</h2>
+
+            <form method="get" class="row g-2 mt-2 mb-4">
+                <div class="col-md-9">
+                    <input type="text" name="q" value="{{ query }}" class="form-control form-control-lg" placeholder="Search for medicines or manufacturer">
+                </div>
+                <div class="col-md-3 d-grid">
+                    <button type="submit" class="btn btn-success btn-lg">Find</button>
+                </div>
+            </form>
+
+            {% for medicine in medicines %}
+                <div class="card mb-3 shadow-sm">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4>{{ medicine.name }}</h4>
+                                <p class="text-secondary mb-2">{{ medicine.manufacturer }}</p>
+                                {% if medicine.prescription_required %}
+                                    <span class="badge bg-warning text-dark">Prescription required</span>
+                                {% else %}
+                                    <span class="badge bg-success">Prescription NOT required</span>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                                <a class="btn btn-outline-success" href="{% url 'details' medicine.id %}">View details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="alert alert-info">
+                    Medicines not found.
+                </div>
+            {% endfor %}
         </div>
     </div>
-
 
 </div>
 {% endblock %}

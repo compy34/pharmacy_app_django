@@ -5,7 +5,7 @@ class Medicine(models.Model):
     manufacturer = models.CharField(max_length=200, verbose_name="Manufacturer")
     description = models.TextField(verbose_name="Description")
     category = models.CharField(max_length=200, verbose_name="Category")
-    prescription_required = models.TextField(default= False,verbose_name="Prescription")
+    prescription_required = models.BooleanField(default= False,verbose_name="Prescription")
 
     def __str__(self):
         return self.name
